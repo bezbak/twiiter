@@ -31,3 +31,17 @@ def register(request):
         'settings':settings
     }
     return render(request, 'form-register.html', context)
+
+def user_login(request):
+    settings = Settings.objects.latest('id')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = User.objects.get(username=username)
+        user = authenticate(username = username, password = password)
+        login(request,user)
+        return redirect('index')
+    context = {
+        'settings':settings
+    }
+    return render(request, 'form-login.html', context)

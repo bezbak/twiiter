@@ -157,13 +157,16 @@
                     <li><a href="development-icons.html"> Icons </a></li>
                 </ul>
             </li>
-            <li><a href="#"> <ion-icon name="log-in-outline" class="side-icon"></ion-icon> <span>  Authentication  </span>  </a>
-                <ul>
-                    <li><a href="form-login.html">form login </a></li>
-                    <li><a href="form-register.html">form register</a></li>
-                </ul>
-            </li>
-            
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}"> <span>  Выйти  </span>  </a></li>
+            {% else %}
+                <li><a href="#"> <ion-icon name="log-in-outline" class="side-icon"></ion-icon> <span>  Войти  </span>  </a>
+                    <ul>
+                        <li><a href="{% url 'user_login' %}">Войти </a></li>
+                        <li><a href="{% url 'register' %}">Регистрация</a></li>
+                    </ul>
+                </li>
+            {% endif %}
         </ul>
 
         <div class="footer-links">
