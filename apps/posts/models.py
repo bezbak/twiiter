@@ -32,3 +32,33 @@ class Posts(models.Model):
     class Meta:
         verbose_name='Пост'
         verbose_name_plural='Посты'
+
+class Like(models.Model):
+    post = models.ForeignKey(
+        Posts,
+        related_name='like_post',
+        on_delete=models.CASCADE
+    )
+    user = models.ForeignKey(
+        User,
+        related_name='like_user',
+        on_delete=models.CASCADE
+    )
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Posts,
+        related_name='comment_post',
+        on_delete=models.CASCADE
+    )
+    user = models.ForeignKey(
+        User,
+        related_name='comment_user',
+        on_delete=models.CASCADE
+    )
+    text = models.CharField(
+        max_length=255
+    )
+    created = models.DateTimeField(
+        auto_now_add=True
+    )
