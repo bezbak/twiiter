@@ -185,7 +185,7 @@
                                             </div>
                                         </div>
                         
-                                        <div style='overflow:auto;' class="border-t py-4 space-y-4 dark:border-gray-600">
+                                        <div style='max-height:300px;overflow:auto;' class="border-t py-4 space-y-4 dark:border-gray-600">
                                               {% for post_comment in post.comment_post.all %}  
                                             <div class="flex">
                                                 <div class="w-10 h-10 rounded-full relative flex-shrink-0">
@@ -206,7 +206,7 @@
                                             {% endfor %}
                                         </div>
                                         
-                                        <a href="#" class="hover:text-blue-600 hover:underline">  Veiw 8 more Comments </a>
+                                        <a href="#" class="hover:text-blue-600 hover:underline">  {{post.comment_post.count}} коментариев </a>
                         
                                         <form method='POST' class="bg-gray-100 rounded-full relative dark:bg-gray-800 border-t">
                                             {% csrf_token %}
@@ -324,7 +324,7 @@
                                             </div>
                                         </div>
                         
-                                        <div style='overflow:auto;' class="border-t py-4 space-y-4 dark:border-gray-600">
+                                        <div style='max-height:300px;overflow:auto;' class="border-t py-4 space-y-4 dark:border-gray-600">
                                               {% for post_comment in post.comment_post.all %}  
                                             <div class="flex">
                                                 <div class="w-10 h-10 rounded-full relative flex-shrink-0">
@@ -345,7 +345,7 @@
                                             {% endfor %}
                                         </div>
                                         
-                                        <a href="#" class="hover:text-blue-600 hover:underline">  Veiw 8 more Comments </a>
+                                        <a href="#" class="hover:text-blue-600 hover:underline">  {{post.comment_post.count}} коментариев </a>
                         
                                         <form method='POST' class="bg-gray-100 rounded-full relative dark:bg-gray-800 border-t">
                                             {% csrf_token %}
@@ -460,7 +460,7 @@
                                             </div>
                                         </div>
                         
-                                        <div style='overflow:auto;' class="border-t py-4 space-y-4 dark:border-gray-600">
+                                        <div style='max-height:300px;overflow:auto;' class="border-t py-4 space-y-4 dark:border-gray-600">
                                               {% for post_comment in post.comment_post.all %}  
                                             <div class="flex">
                                                 <div class="w-10 h-10 rounded-full relative flex-shrink-0">
@@ -481,7 +481,7 @@
                                             {% endfor %}
                                         </div>
                                         
-                                        <a href="#" class="hover:text-blue-600 hover:underline">  Veiw 8 more Comments </a>
+                                        <a href="#" class="hover:text-blue-600 hover:underline">  {{post.comment_post.count}} коментариев </a>
                         
                                         <form method='POST' class="bg-gray-100 rounded-full relative dark:bg-gray-800 border-t">
                                             {% csrf_token %}
