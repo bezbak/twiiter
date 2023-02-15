@@ -45,3 +45,10 @@ def user_login(request):
         'settings':settings
     }
     return render(request, 'form-login.html', context)
+
+def account(request, username):
+    user = User.objects.get(username = username)
+    context = {
+        'user':user
+    }
+    return render(request,'account.html', context)

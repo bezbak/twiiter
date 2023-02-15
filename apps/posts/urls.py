@@ -1,5 +1,6 @@
 from django.urls import path
-from apps.posts.views import update_post
+from apps.posts.views import update_post, post_delete
 urlpatterns = [
     path('update_post/<int:id>/', update_post, name='update_post'),
+    path('post_delete/<int:id>/', post_delete, name='post_delete'),
 ]

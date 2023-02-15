@@ -161,6 +161,9 @@
                                             <a href="{% url 'update_post' post.id %}" class="flex items-center space-x-2">
                                                 <div> Обновить пост</div>
                                             </a>
+                                            <a href="{% url 'post_delete' post.id %}" class="flex items-center space-x-2">
+                                                <div> Удалить пост</div>
+                                            </a>
                                             {% endif %}
                                             <a href="#" class="flex items-center space-x-2 flex-1 justify-end">
                                                 <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
@@ -297,6 +300,9 @@
                                             <a href="{% url 'update_post' post.id %}" class="flex items-center space-x-2">
                                                 <div> Обновить пост</div>
                                             </a>
+                                            <a href="{% url 'post_delete' post.id %}" class="flex items-center space-x-2">
+                                                <div> Удалить пост</div>
+                                            </a>
                                             {% endif %}
                                             <a href="#" class="flex items-center space-x-2 flex-1 justify-end">
                                                 <div class="p-2 rounded-full  text-black lg:bg-gray-100 dark:bg-gray-600">
@@ -409,7 +415,7 @@
                                     </div>
                         
                                     <div class="w-full h-full">
-                                        <video src='{{post.video.url}}' type='video/mp4' x  ></video>
+                                        <video src='{{post.video.url}}' type='video/mp4' controls ></video>
                                     </div>
                         
                                     <div class="p-4 space-y-3"> 
@@ -429,6 +435,9 @@
                                             {% if request.user == post.user %}
                                             <a href="{% url 'update_post' post.id %}" class="flex items-center space-x-2">
                                                 <div> Обновить пост</div>
+                                            </a>
+                                            <a href="{% url 'post_delete' post.id %}" class="flex items-center space-x-2">
+                                                <div> Удалить пост</div>
                                             </a>
                                             {% endif %}
                                             <a href="#" class="flex items-center space-x-2 flex-1 justify-end">

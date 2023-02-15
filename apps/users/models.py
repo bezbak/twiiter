@@ -22,6 +22,21 @@ class User(AbstractUser):
     phone_number = models.CharField(
         max_length=25
     )
+    live_in = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
+    from_in = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
+    status = models.CharField(
+        max_length=50,
+        blank=True, 
+        null=True
+    )
     
     def __str__(self):
         return self.username    

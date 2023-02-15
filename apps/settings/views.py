@@ -13,12 +13,15 @@ def index(request):
                 try:
                     post = Posts.objects.create(image = post_file, user = request.user)
                     post.save()
+                    return redirect('index')
                 except:
                     post = Posts.objects.create(video = post_file, user = request.user)
                     post.save()
+                    return redirect('index')
             else:
                 post = Posts.objects.create(text = post_text, user = request.user)
                 post.save()
+                return redirect('index')
         if 'like' in request.POST:
             post = request.POST.get('post')
             try:
