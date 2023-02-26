@@ -25,13 +25,13 @@ def register(request):
                 user = User.objects.get(username = username)
                 user = authenticate(username = username, password = password)
                 login(request, user)
-                return redirect('index')
+                return redirect('account_settings', user.username)
             except:
                 return redirect('register')
     context = {
         'settings':settings
     }
-    return render(request, 'form-register.html', context)
+    return render(request, 'users/form-register.html', context)
 
 def user_login(request):
     settings = Settings.objects.latest('id')
@@ -45,10 +45,11 @@ def user_login(request):
     context = {
         'settings':settings
     }
-    return render(request, 'form-login.html', context)
+    return render(request, 'users/form-login.html', context)
 
 def account(request, username):
     user = User.objects.get(username = username)
+    settings = Settings.objects.latest('id')
     if request.method == 'POST':
         if 'create_post' in request.POST:
             post_text = request.POST.get('post_text')
@@ -85,6 +86,41 @@ def account(request, username):
             except:
                 return redirect('index')
     context = {
-        'user':user
+        'user':user,
+        'settings':settings
     }
-    return render(request,'account.html', context)
+    return render(request,'users/account.html', context)
+
+
+def account_settings(request, username):
+    user = User.objects.get(username=username)
+    settings = Settings.objects.latest('id')
+    if request.user != user:
+        return redirect('index')
+    if request.method == 'POST':
+        gender = request.POST.get('gender')
+        phone_number = request.POST.get('phone_number')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        live_in = request.POST.get('live_in')
+        from_in = request.POST.get('from_in')
+        status = request.POST.get('status')
+        profile_image = request.FILES.get('profile_image')
+        try:
+            user.gender = gender
+            user.phone_number = phone_number
+            user.first_name = first_name
+            user.last_name = last_name
+            user.live_in = live_in
+            user.profile_image = profile_image
+            user.from_in = from_in
+            user.status = status
+            user.save()
+            return redirect('account', user.username)
+        except:
+            return redirect('account_settings')
+    context = {
+        'user':user,
+        'settings':settings
+    }
+    return render(request, 'users/account_settings.html', context)

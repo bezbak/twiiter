@@ -1,0 +1,53 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        input , .bootstrap-select.btn-group button{
+            background-color: #f3f4f6  !important;
+            height: 44px  !important;
+            box-shadow: none  !important; 
+        }
+    </style>
+
+
+        <div id="wrapper" class="flex flex-col h-screen">
+    
+            <!-- header-->
+            <div class="bg-white py-4 shadow dark:bg-gray-800">
+                <div class="max-w-6xl mx-auto">
+    
+    
+                    <div class="flex items-center lg:justify-between justify-around">
+    
+                        <a href="trending.html">
+                            <img src="{% static 'assets/images/logo.png' %}" alt="" class="w-32">
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Content-->
+            <div>
+                <div class="lg:p-12 max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+                    <form method = 'POST' enctype="multipart/form-data" class="lg:p-10 p-6 space-y-3 relative bg-white shadow-xl rounded-md">
+                        {% csrf_token %}
+                        <h1 class="lg:text-2xl text-xl font-semibold mb-6"> Вы точно хотите удалить пост? </h1>
+                        <div class='d-flex justify-between'>
+                            <div class="flex space-x-2">
+                                <button type="submit" class="bg-blue-600 flex h-9 items-center justify-center rounded-md text-white px-5 font-medium">
+                                  Удалить пост </button>    
+                            </div>
+                            <div class="flex space-x-2">
+                                <a href='{% url 'index' %}' class="bg-blue-600 flex h-9 items-center justify-center rounded-md text-white px-5 font-medium">
+                                  Не удалять пост </a>    
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>            
+            <!-- Footer -->    
+        </div>
+
+        
+     
+  {%endblock%}

@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="profile_info">
-                            <h1> {{user.usernmae}} </h1>
+                            <h1> {{user.username}} </h1>
                             <p> Family , Food , Fashion , Fourever <a href="#">Edit </a></p>
                         </div>
 
@@ -90,11 +90,13 @@
                                            <ion-icon name="arrow-redo-outline" class="pr-2 text-xl"></ion-icon> Share Profile
                                         </a> 
                                     </li>
+                                    {% if request.user == user %}
                                     <li> 
-                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                                          <ion-icon name="create-outline" class="pr-2 text-xl"></ion-icon>  Account setting 
+                                        <a href="{% url 'account_settings' user.username %}" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                          <ion-icon name="create-outline" class="pr-2 text-xl"></ion-icon>  Редактирование аккаунта 
                                         </a> 
-                                    </li>
+                                    </li>    
+                                    {% endif %}
                                     <li> 
                                         <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
                                           <ion-icon name="notifications-off-outline" class="pr-2 text-lg"></ion-icon>   Disable notifications
@@ -577,19 +579,19 @@
                         <div class="w-full space-y-6">
                         
                             <div class="widget card p-5">
-                                <h4 class="text-lg font-semibold"> About </h4>
+                                <h4 class="text-lg font-semibold"> БИО </h4>
                                 <ul class="text-gray-600 space-y-3 mt-3">
                                     <li class="flex items-center space-x-2"> 
                                         <ion-icon name="home-sharp" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
-                                        Live In <strong> Cairo , Eygept  </strong>
+                                        Живёт <strong> {{user.live_in}}  </strong>
                                     </li>
                                     <li class="flex items-center space-x-2"> 
                                         <ion-icon name="globe" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
-                                        From <strong> Aden , Yemen  </strong>
+                                        Родился <strong>{{user.from_in}}  </strong>
                                     </li>
                                     <li class="flex items-center space-x-2"> 
                                         <ion-icon name="heart-sharp" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
-                                        From <strong> Relationship  </strong>
+                                        Статус <strong> {{user.status}}  </strong>
                                     </li>
                                     <li class="flex items-center space-x-2"> 
                                         <ion-icon name="logo-rss" class="rounded-full bg-gray-200 text-xl p-1 mr-3"></ion-icon>
